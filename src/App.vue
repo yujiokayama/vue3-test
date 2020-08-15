@@ -3,12 +3,11 @@
     <nav>
       <ul>
         <li><router-link to="/">HOME</router-link></li>
+        <li><router-link to="/composition-test">CompositionTest</router-link></li>
         <li><router-link to="/about">ABOUT</router-link></li>
       </ul>
     </nav>
     <router-view></router-view>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
   </div>
 </template>
 
