@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 import CompositionTest from "../views/CompositionTest.vue";
+import VuexTest from "../views/VuexTest.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/composition-test",
     name: "CompositionTest",
     component: CompositionTest,
+  },
+  {
+    path: "/vuex-test",
+    name: "VuexTest",
+    component: VuexTest,
   },
   {
     path: "/about",

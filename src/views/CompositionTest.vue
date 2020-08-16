@@ -1,23 +1,26 @@
 <template>
-  <div>
-    <h1>Composition APIのテスト</h1>
-    <h2>リアクティブなプロパティの宣言 ref, reactive</h2>
-    <p>reactive: {{ state.messageOne }}</p>
-    <p>ref: {{ messageTwo }}</p>
-    <h2>computed</h2>
-    {{ helloVue }}
-    {{ helloMessage("hoge") }}
+  <h1>Composition APIのテスト</h1>
+  <h2>リアクティブなプロパティの宣言</h2>
+  <p>reactive: {{ state.message }}</p>
 
-    <h2>v-modelの仕様変更(一つの要素に複数のプロパティを指定できる)</h2>
-    <ChildTest v-model:name="state.name" v-model:age="state.age" />
+  <h2>ref($refsの代わり？)</h2>
+  <div ref="refDivElement">refですよ</div>
 
-    <h2>v-for</h2>
-    <ul>
-      <li v-for="member in state.memberList" :key="member.id">
-        {{ member.name }}
-      </li>
-    </ul>
-  </div>
+  <h2>computed</h2>
+  {{ helloVue }}
+  {{ helloMessage("hoge") }}
+
+  <h2>
+    v-modelの仕様変更(一つのコンポーネント(要素)に複数のプロパティを指定できる)
+  </h2>
+  <ChildTest v-model:name="state.name" v-model:age="state.age" />
+
+  <h2>v-for</h2>
+  <ul>
+    <li v-for="member in state.memberList" :key="member.id">
+      {{ member.name }}
+    </li>
+  </ul>
 </template>
 
 <script lang="ts">
@@ -36,7 +39,7 @@ export default defineComponent({
     };
 
     /**
-     * reactive data
+     * reactive
      */
     const state = reactive<{
       name: string;
@@ -58,7 +61,12 @@ export default defineComponent({
       ],
       message: "こんにちは",
     });
-    const messageHello = ref<string>("こんにちは");
+
+    /**
+     * ref
+     */
+
+    const refDivElement = ref<HTMLDivElement>();
 
     /**
      * computed
@@ -75,11 +83,13 @@ export default defineComponent({
      */
     onMounted(() => {
       console.log("is mounted");
+      // ref
+      console.log(refDivElement.value);
     });
 
     return {
       state,
-      messageHello,
+      refDivElement,
       helloVue,
       helloMessage,
     };

@@ -3,8 +3,10 @@
     <nav>
       <ul>
         <li><router-link to="/">HOME</router-link></li>
-        <li><router-link to="/composition-test">CompositionTest</router-link></li>
-        <li><router-link to="/about">ABOUT</router-link></li>
+        <li>
+          <router-link to="/composition-test">CompositionTest</router-link>
+        </li>
+        <li><router-link to="/vuex-test">VuexTest</router-link></li>
       </ul>
     </nav>
     <router-view></router-view>
@@ -13,13 +15,9 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
 
 export default defineComponent({
   name: "App",
-  components: {
-    HelloWorld,
-  },
 });
 </script>
 
