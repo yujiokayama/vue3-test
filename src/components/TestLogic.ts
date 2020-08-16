@@ -1,19 +1,22 @@
-import { defineComponent, computed, reactive, ref, onMounted } from "vue";
+import { defineComponent, computed, reactive, ref, onMounted } from 'vue'
 
-export default defineComponent({
-  name: "TestLogic",
-  setup() {
-    /**
-     * reactive
-     */
-    const state = reactive<{
-      name: string;
-    }>({
-      name: "デフォルト",
-    });
+const TestLogic = () => {
+  // 状態
+  const state = reactive<{
+    count: number
+  }>({
+    count: 0
+  })
 
-    return {
-      state,
-    };
-  },
-});
+  // ロジック
+  const increment = () => state.count++
+  const decrement = () => state.count--
+
+  return {
+    state,
+    increment,
+    decrement
+  }
+}
+
+export default TestLogic
