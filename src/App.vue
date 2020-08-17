@@ -6,7 +6,12 @@
         <li>
           <router-link to="/composition-test">CompositionTest</router-link>
         </li>
-        <li><router-link to="/provide-inject-test">ProvideInjectTest</router-link></li>
+        <li>
+          <router-link to="/provide-inject-test">ProvideInjectTest</router-link>
+        </li>
+        <li>
+          <router-link to="/vuex-test">VuexTest</router-link>
+        </li>
       </ul>
     </nav>
     <router-view></router-view>
@@ -14,11 +19,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: "App",
-});
+  name: 'App'
+})
 </script>
 
 <style>

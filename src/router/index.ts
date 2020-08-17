@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 import CompositionTest from "../views/CompositionTest.vue";
 import ProvideInjectTest from "../views/ProvideInjectTest.vue";
+import VuexTest from "@/views/VuexTest.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/provide-inject-test",
     name: "ProvideInjectTest",
     component: ProvideInjectTest,
+  },
+  {
+    path: "/vuex-test",
+    name: "VuexTest",
+    component: VuexTest,
   },
   {
     path: "/about",

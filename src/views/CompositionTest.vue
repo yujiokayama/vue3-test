@@ -8,7 +8,7 @@
 
   <h2>computed</h2>
   {{ helloVue }}
-  {{ helloMessage("hoge") }}
+  {{ helloMessage('hoge') }}
 
   <h2>
     v-modelの仕様変更(一つのコンポーネント(要素)に複数のプロパティを指定できる)
@@ -24,75 +24,76 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, ref, onMounted } from "vue";
-import ChildTest from "../components/ChildTest.vue";
+import { defineComponent, computed, reactive, ref, onMounted } from 'vue'
+import ChildTest from '../components/ChildTest.vue'
+import createStore from '@/store/index'
 
 export default defineComponent({
-  name: " CompositionTest",
+  name: ' CompositionTest',
   components: {
-    ChildTest,
+    ChildTest
   },
   setup() {
     type Member = {
-      id: number;
-      name: string;
-    };
+      id: number
+      name: string
+    }
 
     /**
      * reactive
      */
     const state = reactive<{
-      name: string;
-      age: string;
-      memberList: Member[];
-      message: string;
+      name: string
+      age: string
+      memberList: Member[]
+      message: string
     }>({
-      name: "デフォルト",
-      age: "",
+      name: 'デフォルト',
+      age: '',
       memberList: [
         {
           id: 1,
-          name: "ポンタ",
+          name: 'ポンタ'
         },
         {
           id: 2,
-          name: "たぬきち",
-        },
+          name: 'たぬきち'
+        }
       ],
-      message: "こんにちは",
-    });
+      message: 'こんにちは'
+    })
 
     /**
      * ref
      */
 
-    const refDivElement = ref<HTMLDivElement>();
+    const refDivElement = ref<HTMLDivElement>()
 
     /**
      * computed
      */
     const helloVue = computed(() => {
-      return `${state.message} Vue3!!`;
-    });
+      return `${state.message} Vue3!!`
+    })
     const helloMessage = computed(() => (message: string) =>
       `こんにちは${message}!`
-    );
+    )
 
     /**
      * lifecycle hook
      */
     onMounted(() => {
-      console.log("is mounted");
+      console.log('is mounted')
       // ref
-      console.log(refDivElement.value);
-    });
+      console.log(refDivElement.value)
+    })
 
     return {
       state,
       refDivElement,
       helloVue,
-      helloMessage,
-    };
-  },
-});
+      helloMessage
+    }
+  }
+})
 </script>

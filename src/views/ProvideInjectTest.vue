@@ -1,7 +1,6 @@
 <template>
   <h1>provide/injectテスト</h1>
   {{ state.count }}
-
   <button @click="increment">プラス</button>
   <button @click="decrement">マイナス</button>
 
