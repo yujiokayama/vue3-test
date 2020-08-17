@@ -1,6 +1,10 @@
 <template>
   <h1>provide/injectテスト</h1>
   {{ state.count }}
+
+  <button @click="increment">プラス</button>
+  <button @click="decrement">マイナス</button>
+
 </template>
 
 <script lang="ts">
@@ -12,7 +16,9 @@ export default defineComponent({
   setup() {
     const { state, increment, decrement } = TestLogic()
     return {
-      state
+      state,
+      increment,
+      decrement
     }
   }
 })
