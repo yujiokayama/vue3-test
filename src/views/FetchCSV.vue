@@ -2,19 +2,28 @@
   <h1>CSVをJSONに変換する</h1>
   <div class="container">
     <ul>
-      <li v-for="(csv, i) in state.csv" :key="i">
-        {{ csv }}
+      <li v-for="(data, i) in state.csv" :key="i" ref="refCSV">
+        {{ data.lastUpdate }}
+        {{ data.description }}
+        <a :href="data.srcurl_pdf">{{ data.srcurl_pdf }}</a>
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, reactive } from 'vue'
+import { defineComponent, onMounted, reactive, ref } from 'vue'
+import * as d3 from 'd3'
 
 export default defineComponent({
   name: 'FetchCSV',
   setup() {
+    /**
+     * ref
+     */
+
+    const refCSV = ref<HTMLDataListElement>()
+
     /**
      * reactive
      */
@@ -57,40 +66,31 @@ export default defineComponent({
       )
       req.send(null)
       req.onload = function() {
-        state.csv = convertCSVtoArray(req.responseText)
+        state.csv = req.responseText
       }
-    }
-
-    function convertCSVtoArray(csv: any) {
-      var csvData = csv.split('\n')
-      var jsonArray = []
-      var items = csvData[0].split(',')
-      for (var i = 1; i < csvData.length - 1; i++) {
-        var a_line: any = new Object()
-        var csvArrayD = csvData[i].split(',')
-        for (var j = 0; j < items.length; j++) {
-          a_line[items[j]] = csvArrayD[j]
-        }
-        jsonArray.push(a_line)
-      }
-      console.log(jsonArray)
-      return jsonArray
     }
 
     /**
      * lifecycle hook
      */
     onMounted(() => {
-      fetchJSON().then(data => {
-        state.json = data
-      })
-      // fetchCSV().then(data => {
-      //   state.csv = data
-      // })
-      getCSV()
+      d3.csv(
+        'https://storage.googleapis.com/y-o-test-bucket/covid19japan-all.csv'
+      )
+        .then(function(data) {
+          var result = []
+          for (var i = 0; i < data.length; i++) {
+            result.push(data[i])
+          }
+          state.csv = result
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
     })
     return {
-      state
+      state,
+      refCSV
     }
   }
 })
