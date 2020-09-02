@@ -80,10 +80,19 @@ export default defineComponent({
     )
 
     /**
+     * method
+     */
+    const methodTest = (str: string): void => {
+      console.log(str)
+    }
+
+
+    /**
      * lifecycle hook
      */
     onMounted(() => {
       console.log('is mounted')
+      console.log('is method')
       // ref
       console.log(refDivElement.value)
     })

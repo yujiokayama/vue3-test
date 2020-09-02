@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import CompositionTest from "../views/CompositionTest.vue";
 import ProvideInjectTest from "../views/ProvideInjectTest.vue";
 import VuexTest from "@/views/VuexTest.vue";
+import FetchCSV from "@/views/FetchCSV.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -24,6 +25,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/vuex-test",
     name: "VuexTest",
     component: VuexTest,
+  },
+  {
+    path: "/fetch-csv",
+    name: "FetchCSV",
+    component: FetchCSV,
   },
   {
     path: "/about",

@@ -12,6 +12,9 @@
         <li>
           <router-link to="/vuex-test">VuexTest</router-link>
         </li>
+        <li>
+          <router-link to="/fetch-csv">FetchCSV</router-link>
+        </li>
       </ul>
     </nav>
     <router-view></router-view>
