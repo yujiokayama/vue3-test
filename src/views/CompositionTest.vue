@@ -26,7 +26,6 @@
 <script lang="ts">
 import { defineComponent, computed, reactive, ref, onMounted } from 'vue'
 import ChildTest from '../components/ChildTest.vue'
-import createStore from '@/store/index'
 
 export default defineComponent({
   name: ' CompositionTest',

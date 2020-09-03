@@ -1,12 +1,17 @@
 import { createStore } from 'vuex'
 
-export default createStore({
-  state: {
-    count: 0
-  },
+export type State = {
+  counter: number
+}
+const state: State = {
+  counter: 0
+}
+
+export const store = createStore({
+  state,
   mutations: {
     updateCount(state, payload) {
-      state.count = payload
+      state.counter += payload
     }
   },
   actions: {
@@ -16,7 +21,7 @@ export default createStore({
   },
   getters: {
     countDouble(state) {
-      return state.count * 2
+      return state.counter * 2
     }
   },
   modules: {}
